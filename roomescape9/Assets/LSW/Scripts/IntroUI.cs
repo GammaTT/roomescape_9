@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class IntroUI : MonoBehaviour
 {
@@ -16,10 +14,11 @@ public class IntroUI : MonoBehaviour
     private Color optionOriginalColor;
     private Color exitOriginalColor;
 
-    public Poster poster;
+    public PosterUI poster;
 
     private void Start()
     {
+        Time.timeScale = 1;
         startOriginalColor = startText.color;
         optionOriginalColor = optionText.color;
         exitOriginalColor = exitText.color;

@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidbody;
     public GameObject poster;
     private bool isOptionPanelActive = false;
-    public Option option;
+    public OptionUI option;
 
 
     private void Awake()

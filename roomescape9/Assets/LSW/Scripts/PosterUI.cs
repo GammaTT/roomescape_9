@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class Poster : MonoBehaviour
+public class PosterUI : MonoBehaviour
 {
     [SerializeField] private GameObject poster;
     [SerializeField] public GameObject wanted;

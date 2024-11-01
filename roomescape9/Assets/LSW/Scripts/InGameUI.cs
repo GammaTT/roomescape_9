@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InGameUI : MonoBehaviour
 {
@@ -22,6 +21,11 @@ public class InGameUI : MonoBehaviour
     public void OnClickCloseBtn()
     {
         optionPanel.SetActive(false);
+    }
+
+    public void OnClickExitBtn()
+    {
+        SceneManager.LoadScene("IntroScene");
     }
 
 }
