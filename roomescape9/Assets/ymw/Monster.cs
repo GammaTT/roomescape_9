@@ -24,10 +24,12 @@ public class Monster : MonoBehaviour
 
     private float playerDistance;
 
-    public Transform patrolStartPosition;
-    public Transform patrolEndPosition;
+    public Transform patrolTransform1;
+    public Transform patrolTransform2;
 
-    bool isToStartPosition;
+    public Transform targetTransform;
+
+    bool isToPatrol1;
 
     private void Awake()
     {
@@ -38,8 +40,11 @@ public class Monster : MonoBehaviour
     void Start()
     {
         aiState = AIState.Idle;
-        isToStartPosition = true;
-        agent.SetDestination(patrolEndPosition.position);
+
+        isToPatrol1 = true;
+        targetTransform = patrolTransform1;
+
+        SetTargetPosition();
     }
 
     // Update is called once per frame
@@ -50,15 +55,22 @@ public class Monster : MonoBehaviour
 
     public void ToggleDestination()
     {
-        if (isToStartPosition)
+        if (isToPatrol1)
         {
-            isToStartPosition = false;
-            agent.SetDestination(patrolEndPosition.position);
+            isToPatrol1 = false;
+            targetTransform = patrolTransform2;
+            SetTargetPosition();
         }
         else
         {
-            isToStartPosition = true;
-            agent.SetDestination(patrolStartPosition.position);
+            isToPatrol1 = true;
+            targetTransform = patrolTransform1;
+            SetTargetPosition();
         }
+    }
+
+    public void SetTargetPosition()
+    {
+        agent.SetDestination(targetTransform.position);
     }
 }

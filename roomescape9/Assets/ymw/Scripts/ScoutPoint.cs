@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ScoutPoint : MonoBehaviour
 {
     public bool isStartPosition;
 
@@ -21,10 +21,13 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(TryGetComponent(out Monster monster))
+        if(other.TryGetComponent(out Monster monster))
         {
-            Debug.Log("f");
-            monster.ToggleDestination();
+            if (monster.targetTransform == transform)
+            {
+                Debug.Log("Toggle");
+                monster.ToggleDestination();
+            }
         }
     }
 }
