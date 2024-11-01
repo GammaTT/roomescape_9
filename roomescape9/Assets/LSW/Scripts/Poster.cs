@@ -1,10 +1,12 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Poster : MonoBehaviour
 {
     [SerializeField] private GameObject poster;
-    [SerializeField] public GameObject text;
+    [SerializeField] public GameObject wanted;
     [SerializeField] public GameObject story;
 
 
@@ -18,12 +20,12 @@ public class Poster : MonoBehaviour
 
     public void OnClickPoster()
     {
-         text.SetActive(true);
+        wanted.SetActive(true);
     }
 
-    public void OnClickText()
+    public void OnClickWanted()
     {
-        text.SetActive(false);
-        story.SetActive(true);
+        wanted.SetActive(false);
+        SceneManager.LoadScene("SangWun");
     } 
 }
