@@ -17,6 +17,8 @@ public class IntroManager : MonoBehaviour
     private Color optionOriginalColor;
     private Color exitOriginalColor;
 
+    public Poster poster;
+
     private void Awake()
     {
         if (Instance == null)
@@ -61,7 +63,7 @@ public class IntroManager : MonoBehaviour
 
     public void OpenStartUI()
     {
-        Debug.Log("Start UI opened");
+        poster.OnPoster();
     }
 
     public void OpenOptionUI()
