@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     public Action inventory;
 
     private Rigidbody rigidbody;
+    public GameObject poster;
+    private bool isOptionPanelActive = false;
+    public Option option;
+
 
     private void Awake()
     {
@@ -34,11 +38,21 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+       
     }
 
     private void Update()
     {
-        
+        if (poster.activeSelf || option.optionPanel.activeSelf)
+        {
+            canLook = false;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            canLook = true;
+            Time.timeScale = 1;
+        }
     }
 
     private void FixedUpdate()
@@ -106,6 +120,24 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 2f, transform.localScale.z); 
         }
     }
+
+    public void OnOptionInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            isOptionPanelActive = !isOptionPanelActive;
+
+            if (isOptionPanelActive)
+            {
+                option.OpenOptionUI();
+            }
+            else
+            {
+                option.CloseOptionUI();
+            }
+        }
+    }
+
 
     private void Move()
     {
